@@ -1,0 +1,183 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// 전역 변수 선언
+int deathCount = 0;     // 죽은 횟수 저장
+int endingCount = 0;    // 본 엔딩 개수 저장
+int easterEggCount = 0; // 이스터에그 발견 횟수 저장
+int gachaCount = 0;     // 가챠 돌린 횟수 저장
+
+// 함수 선언
+void startGame();
+void searchForBathroom();
+void randomEvent();
+void secretEnding();
+void restartGame();
+void gachaSpin();
+void gachaReward(int dice);
+void spaceAdventure();
+void dragonQuest();
+void becomePresident();
+void richLife();
+void pirateKing();
+void historicalEvent();
+void newDimensionEvent();
+void alternateUniverseEvent();
+void crossoverEvent();
+void virusEscape();
+void chooseYourDestiny();
+void megaEvent();
+void cityBattle();
+void magicalWorldEvent();
+void realityShiftEvent();
+
+// 메인 함수
+int main() {
+    srand(time(NULL));  // 랜덤 시드 설정
+    startGame();        // 게임 시작
+    return 0;
+}
+
+// 게임 시작
+void startGame() {
+    int choice;
+    printf("\n🚨 갑자기 엄청난 배탈이 찾아왔다! 💩\n");
+    printf("🤔 도대체 왜 이런 일이?!\n");
+    printf("1️⃣ 어제 먹은 매운 떡볶이 때문 🌶️\n");
+    printf("2️⃣ 친구가 내 음료에 변비약을 섞어 넣음 😱\n");
+    printf("3️⃣ 정부가 화장실 사용을 금지하는 법을 통과시킴 🏛️\n");
+    printf("4️⃣ 나는 사실 화장실이 없는 세계에서 온 이방인 🚀\n");
+    printf("💡 (이스터에그: 99 입력)\n");
+    printf("👉 선택 (1~4): ");
+    scanf("%d", &choice);
+    getchar(); // 입력 버퍼 정리
+
+    if (choice >= 1 && choice <= 4) {
+        searchForBathroom();
+    } else if (choice == 99) {
+        secretEnding();
+    } else {
+        printf("\n💀 너무 고민하다가 배가 터졌다!\n");
+        deathCount++;
+        restartGame();
+    }
+}
+
+// 화장실 찾기
+void searchForBathroom() {
+    int choice;
+    printf("\n🏃‍♂️ 화장실을 찾기 위해 미친 듯이 달린다!\n");
+    printf("🚪 두 개의 문이 보인다. 어느 쪽으로 갈까?\n");
+    printf("1️⃣ 왼쪽 문 (평범한 화장실) 🚪\n");
+    printf("2️⃣ 오른쪽 문 (이상한 소리가 들림) 🌌\n");
+    printf("3️⃣ 주사위를 던져보자! 🎲 (가챠시스템) 🎰\n");
+    printf("4️⃣ 두 세계가 만나는 문! 🚪🚀\n");
+    printf("👉 선택 (1, 2, 3 또는 4): ");
+    scanf("%d", &choice);
+    getchar(); // 입력 버퍼 정리
+
+    if (choice == 1) {
+        printf("\n🚪 문을 열었더니… 화장실 발견! 🎉\n");
+        endingCount++;
+    } else if (choice == 2) {
+        randomEvent();
+    } else if (choice == 3) {
+        gachaSpin();
+    } else if (choice == 4) {
+        crossoverEvent();
+    } else {
+        printf("\n💀 갑자기 화장실 바닥이 무너졌다!\n");
+        deathCount++;
+        restartGame();
+    }
+}
+
+void randomEvent() {
+    int event = rand() % 12; // 12가지 랜덤 이벤트
+
+    switch (event) {
+        case 0: printf("\n🔥 배탈이 너무 심해 몸에서 화산이 폭발했다!\n💀 세계가 불타버림… '세계 멸망' 엔딩!\n"); deathCount++; break;
+        case 1: spaceAdventure(); break;
+        case 2: becomePresident(); break;
+        case 3: historicalEvent(); break;
+        case 4: dragonQuest(); break;
+        case 5: newDimensionEvent(); break;
+        case 6: virusEscape(); break;
+        case 7: magicalWorldEvent(); break;
+        case 8: cityBattle(); break;
+        case 9: realityShiftEvent(); break;
+        case 10: pirateKing(); break;
+        case 11: spaceAdventure(); break;
+    }
+    restartGame();
+}
+
+// 가챠 시스템
+void gachaSpin() {
+    printf("\n🎲 주사위를 굴려보자! 가챠 시스템 활성화!\n");
+    int dice = rand() % 6 + 1; // 1~6 사이의 랜덤 값
+    printf("🎲 주사위 결과: %d\n", dice);
+    gachaReward(dice);
+}
+
+void gachaReward(int dice) {
+    gachaCount++;
+
+    switch (dice) {
+        case 1: printf("\n💀 '배탈이 너무 심해 배가 터졌다!'\n"); deathCount++; break;
+        case 2: richLife(); break;
+        case 3: chooseYourDestiny(); break;
+        case 4: megaEvent(); break;
+        case 5: alternateUniverseEvent(); break;
+        case 6: printf("\n🏆 '전설의 화장실을 발견했다!'\n"); endingCount++; break;
+    }
+    restartGame();
+}
+
+// 게임 재시작
+void restartGame() {
+    int choice;
+    printf("\n📊 현재까지의 통계 📊\n");
+    printf("💀 죽은 횟수: %d번\n", deathCount);
+    printf("🏆 본 엔딩 개수: %d개\n", endingCount);
+    printf("🥚 발견한 이스터에그 개수: %d개\n", easterEggCount);
+    printf("\n🔄 다시 도전하시겠습니까?\n");
+    printf("1. 네, 다시 시작! 🔄\n");
+    printf("2. 아니요, 종료합니다. 🚪\n");
+    printf("👉 선택 (1 또는 2): ");
+    scanf("%d", &choice);
+    getchar();
+
+    if (choice == 1) {
+        startGame();
+    } else {
+        printf("\n🎮 게임을 종료합니다. 감사합니다! 🙌\n");
+        exit(0);
+    }
+}
+
+// 이스터에그 엔딩
+void secretEnding() {
+    printf("\n🎉 이스터에그를 발견했다!\n");
+    easterEggCount++;
+    endingCount++;
+    restartGame();
+}
+
+void spaceAdventure() { printf("\n🚀 우주 모험을 시작합니다!\n"); }
+void dragonQuest() { printf("\n🐉 용과의 전투가 시작됩니다!\n"); }
+void becomePresident() { printf("\n👑 대통령이 되었습니다!\n"); }
+void richLife() { printf("\n💰 부자가 되었습니다!\n"); }
+void pirateKing() { printf("\n🏴‍☠️ 해적왕이 되었습니다!\n"); }
+void historicalEvent() { printf("\n⏳ 역사적인 순간을 맞이합니다!\n"); }
+void newDimensionEvent() { printf("\n🌌 새로운 차원으로 이동합니다!\n"); }
+void alternateUniverseEvent() { printf("\n🌠 평행우주에 도착했습니다!\n"); }
+void crossoverEvent() { printf("\n🎮 크로스오버 이벤트 발생!\n"); }
+void virusEscape() { printf("\n🦠 바이러스를 피해 도망칩니다!\n"); }
+void chooseYourDestiny() { printf("\n✨ 운명을 선택하세요!\n"); }
+void megaEvent() { printf("\n🎮 메가 이벤트 발생!\n"); }
+void cityBattle() { printf("\n🌆 도시 전투가 시작됩니다!\n"); }
+void magicalWorldEvent() { printf("\n🧙‍♂️ 마법 세계에 오신 것을 환영합니다!\n"); }
+void realityShiftEvent() { printf("\n🌈 현실이 변화합니다!\n"); }
